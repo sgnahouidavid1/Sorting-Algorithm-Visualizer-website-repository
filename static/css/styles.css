@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Arbutus&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arbutus&family=Average&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --primary-font: "Arbutus", sans-serif;
+    --secondary-font: "Average", sans-serif;
+    --payne-gray-color: #546A7B;
+    --dim-gray-color: #626267;
+    --cocoa-brown-color: #D96C06;
+    --platinum-color: #DAE3E5;
+    --black-color: #000000;
+    --white-color: #FFFFFF;
+
+
+}
+body {
+    line-height: 1.5;
+    font-size: 16px;
+    font-family: var(--secondary-font);
+    height: 120vh;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.navbar {
+    width: 100%;
+    padding: 20px 40px 30px;
+    background-color: var(--payne-gray-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.navbar .navbar-Container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.navbar .navbar-Container .navbar-Title {
+    font-family: var(--primary-font);
+    font-size: 24px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .navbar-Container img {
+    width: 28px;
+    height: 28px;
+    margin-top: 5px;
+}
