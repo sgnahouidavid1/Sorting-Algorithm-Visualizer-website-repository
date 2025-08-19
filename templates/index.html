@@ -1,58 +1,63 @@
-{% extends 'baseTemplate.html'%}
-
+{% extends 'baseTemplate.html'%} <!-- This template extends the baseTemplate.html -->
+<!-- This is the head block -->
 {% block head %}
 <title> Sorting Algorithm Visualizer </title>
 {% endblock %}
 
-{% block body %}
+{% block body %} <!-- This is the body block -->
 
 <head>
-    <style>
+    <style>  /* This is the CSS for the index page */
         .hero-section {
             width: 100%;
-            height: 2000px;
+            height: 2900px;
+            /* fixed background CSS */
             background-position: center;
             background-size: cover;
-            background-image: url(../static/images/SAV-background-image.png);
+            background-image: url(../static/images/SAV-background-image.png); /* fixed background image */
             background-attachment: fixed;
         }
+
         .hero-section .rdm-text-effect-text {
-           width: 100%;
-           height: 800px;
-           padding-top: 300px;
-           position: relative;
-           z-index: 1;
-           
+            width: 80%;
+            height: 100vh;
+            padding-top: 300px;
+            position: relative;
+            z-index: 1;
+
         }
+
         .hero-section .title-line-vertical {
             position: absolute;
             left: -15px;
-            top: 545px;
-            width: 145px;
+            top: 565px;
+            width: 190px;
             height: 10px;
             border-radius: 10px;
             transform: rotate(90deg);
-            background: var(--black-color);
+            background: var(--cocos-black);
         }
 
-        .hero-section  div:nth-child(1) {
+        .hero-section div:nth-child(1) {
             position: relative;
             top: 200px;
             padding-left: 40px;
             transform: translateY(-50%);
         }
+
         .hero-section div:nth-child(2) {
             position: relative;
-            top: 220px;
+            top: 200px;
             padding-left: 40px;
             transform: translateY(-50%);
         }
-        
+
         .hero-section .rdm-text-effect .line {
             font-family: var(--primary-font);
             font-size: 48px;
             text-align: center;
-            align-self: center; /* Vertically centers the content within this grid item */
+            align-self: center;
+            /* Vertically centers the content within this grid item */
             opacity: 0;
         }
 
@@ -62,34 +67,144 @@
             transform: translateX(-10px);
             font-size: 48px;
             opacity: 0;
-            text-decoration: underline;
-            align-self: center; /* Vertically centers the content within this grid item */
-            transition: opactiy .3s ease-in-out, transform .3s ease-in-out;
+            color: var(--cocos-black);
+            line-height: 1em;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px #000000;
+            align-self: center;
+            /* Vertically centers the content within this grid item */
+            transition: opactiy .2s ease-in-out, transform .2s ease-in-out;
         }
 
         .hero-section-2 {
             width: 100%;
-            height: 1200px;
-            background: linear-gradient(to bottom, var(--black-color), var(--black-color), rgba(0,0,0,0.85));
+            height: 2100px;
+            background: linear-gradient(to bottom, #1E1F1E, #1E1F1E, rgba(15, 16, 14, 0.80));
         }
-        
+
+        .hero-section-2 h2,
+        .hero-section p {
+            padding-top: 30px;
+            margin: 0px 30px;
+        }
+
+        .hero-section-2 footer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 100px;
+        }
     </style>
 </head>
-<section class="hero-section">
-    <div class="rdm-text-effect-text">
-        <div class="rdm-text-effect">
-            <p class="line">Welcome&nbsp;to&nbsp;the&nbsp;Sorting&nbsp;Algorithm&nbsp;Website!!!</p>
-        </div>
-        <div class="rdm-text-effect">
-            <p class="line">By&nbsp;Samuel&nbsp;Gnahoui&nbsp;David</p>
-        </div>
-        <span class="title-line-vertical"></span>
+
+<div class="rdm-text-effect-text">
+    <div class="rdm-text-effect">
+        <p class="line">Welcome&nbsp;to&nbsp;the&nbsp;Sorting&nbsp;Algorithm&nbsp;Website!!!</p>
     </div>
-    <section class="hero-section-2">
-        
-    </section>
+    <div class="rdm-text-effect">
+        <p class="line">By&nbsp;Samuel&nbsp;Gnahoui&nbsp;David</p>
+    </div>
+    <span class="title-line-vertical"></span>
+</div>
+<section class="hero-section-2">
+    <h2
+        style="font-family: var(--primary-font); font-size: 28px; color: var(--platinum-color); letter-spacing: 3px; text-shadow: 2px 2px 4px #000000; line-height: normal;">
+        Sorting Algorithm Visualizer:</h2>
+
+    <p
+        style="font-family: var(--third-font); font-size: 24px; color: var(--platinum-color); text-align: start; width: 70%; text-shadow: 2px 2px 4px #000000;">
+        This website can be a great tool for software developers that are interested in learning different machine
+        learning
+        sorting algorithms such as bubble sort, merge sort, and selection sort. This site can help by providing a visual
+        representation on how a sorting algorithm functions on an array of elements.</p>
+
+    <h2
+        style="font-family: var(--primary-font); font-size: 28px; color: var(--platinum-color); letter-spacing: 3px; text-shadow: 2px 2px 4px #000000; line-height: normal;">
+        What is a Sorting Algorithm?</h2>
+    <p
+        style="font-family: var(--third-font); font-size: 24px; color: var(--platinum-color); text-align: start; width: 70%; text-shadow: 2px 2px 4px #000000;">
+        Sorting algorithms are used to sort data structure according to a specific order relationship, such a numerical
+        order or
+        lexicographical order. This operation is one of the most important and widespread in computer science. For a
+        long time, new methods have been
+        developed to make this faster and faster. <br><br> There are currently hundreds of different sorting algorithms,
+        each with its own specific characteristics. They are
+        classified according to two metrics: space complexity and time complexity. <br><br> <span
+            style="padding-right: 10px; font-family: var(--primary-font);">*Note*</span> Space complexity of an
+        algorithm or a data structure is the amount of memory space required to solve an instance
+        of the computational problem as a function of characteristics of the input. It is the memory required by an
+        algorithm
+        until it executes complexity. <br><br> Those two kinds of complexity are represented with
+        <a href="https://www.programiz.com/dsa/asymptotic-notations#:~:text=Asymptotic%20notations%20are%20the%20mathematical,linear%20i.e.%20the%20best%20case."
+            target="_blank"><span style="color: var(--payne-gray-color);">asymptotic notations</span></a>, mainly with
+        the symbols O, Θ, Ω, representing
+        respectively the upper bound, the tight bound, and the lower bound of the algorithm’s complexity, specifying in
+        brackets
+        an expression in terms of n, the number of the elements of the data structure.
+    </p>
+    <p
+        style="font-family: var(--third-font); font-size: 24px; color: var(--platinum-color); text-align: start; width: 70%; text-shadow: 2px 2px 4px #000000;">
+        Most sorting algorithms are grouped into these two categories:</p>
+    <li
+        style="font-family: var(--third-font); font-size: 24px; color: var(--platinum-color); text-align: start; margin-left: 100px; margin-top: 20px; text-shadow: 2px 2px 4px #000000;">
+        Logarithmic</li>
+    <p
+        style="font-family: var(--third-font); font-size: 24px; color: var(--platinum-color); text-align: start; width: 50%; margin-left: 100px; text-shadow: 2px 2px 4px #000000; padding-top: 10px;">
+        The complex is proportional to the binary logarithm (i.e to the base 2) of n.
+        An example of a logarithmic sorting algorithm is Quick sort, with space and time complexity O(n * log n ).</p>
+    <li
+        style="font-family: var(--third-font); font-size: 24px; color: var(--platinum-color); text-align: start; margin-left: 100px; margin-top: 20px; text-shadow: 2px 2px 4px #000000;">
+        Quadratic</li>
+    <p
+        style="font-family: var(--third-font); font-size: 24px; color: var(--platinum-color); text-align: start; width: 50%; margin-left: 100px; text-shadow: 2px 2px 4px #000000; padding-top: 10px;">
+        The complexity is proportional to the square of n.<br>
+        An example of a quadratic sorting algorithm is Bubble sort, with a time complexity of O(n<sup
+            style="vertical-align: super; font-size: smaller;">2</sup>).</p>
+
+    <p
+        style="font-family: var(--third-font); font-size: 24px; color: var(--platinum-color); text-align: start; width: 70%; text-shadow: 2px 2px 4px #000000;">
+        <span style="padding-right: 10px; font-family: var(--primary-font);">*Note*</span> Time complexity is the
+        computational complexity that describes the amount of computer time it takes to run an
+        algorithm. Big O notation is a mathematical notation that describe the limited behavior of a function when the
+        argument tends towards a particular value or infinity <br><br>Space and time complexity can also be further
+        subdivided into 3 different cases: best case, average case and worst case. <br><br>
+        Sorting algorithms can be difficult to understand and it's easy to get confused. We believe visualizing sorting
+        algorithms can be a great way to better understand their functioning while having fun!</p>
+
+    <div class="sortBtn" style="margin-top: 50px; display: flex; justify-content: center;" >
+        <a class="sort-btn" type="button" id="sort-btn" style="background: var(--payne-gray-color); padding: 20px 30px; font-size: 32px; font-family: var(--primary-font); color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; box-shadow: 2px 2px 4px #000000; border-radius: 10px; letter-spacing: 1px; cursor: pointer;">Let's Start Sorting!</a>
+    </div>
+    <footer id="footer" style="background: var(--cocos-black); width: 100%; height: 160px; margin-top: 160px; padding: 20px 20px 50px;">
+        <span class="link-box-1">
+            <h3
+                style="font-family: var(--primary-font); font-size: 16px; color: var(--payne-gray-color); letter-spacing: 3px; text-shadow: 2px 2px 4px #000000;">
+                Sorting Algorithm Visualizer Creator</h3>
+            <li
+                style="list-style-type: none; padding-top: 10px; font-family: var(--third-font); font-size: 16px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000;">
+                Samuel Gnahoui David</li>
+        </span>
+        <span class="link-box-2">
+            <h3
+                style="font-family: var(--primary-font); font-size: 16px; color: var(--payne-gray-color); letter-spacing: 3px; text-shadow: 2px 2px 4px #000000;">
+                Contacts</h3>
+            <li
+                style="list-style-type: none; padding-top: 10px; font-family: var(--third-font); font-size: 16px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000;">
+                gnahouidavidsamuel@gmail.com</li>
+        </span>
+        <span class="link-box-3" style="margin-top: 50px;">
+            <h3
+                style="font-family: var(--primary-font); font-size: 16px; color: var(--payne-gray-color); letter-spacing: 3px; text-shadow: 2px 2px 4px #000000;">
+                Sources</h3>
+            <a href="https://github.com/sgnahouidavid1" target="_blank"><li
+                style="list-style-type: none; display: flex; text-align: center; padding-top: 10px; font-family: var(--third-font); font-size: 16px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000;">
+                <img src="../static/images/github-image.png"style=" filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.5)); width: 32px; height: 32px;"><span style="padding-left: 10px; margin-top: 5px; ">Github</span></li></a>
+            <a href="https://en.wikipedia.org/wiki/Sorting_algorithm" target="_blank"><li
+                style="list-style-type: none; display: flex; text-align: center; padding-top: 10px; font-family: var(--third-font); font-size: 16px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000;">
+                <img src="../static/images/wiki-image.png" style=" filter: drop-shadow(8px 8px 16px rgba(0, 0, 0, 0.5)); width: 32px; height: 32px;"><span style="padding-left: 10px; margin-top: 5px; ">Wikipedia</span></li></a>
+        </span>
+    </footer>
+
 </section>
-
-
 
 {% endblock %}

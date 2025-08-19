@@ -1,23 +1,87 @@
+<!-- Base Template -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="sorting,sort,bubble,selection,quick,merge,visualization,animation">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon-16x16.ico') }}" type="image/x-icon" >
-    {% block head %}{% endblock %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon-16x16.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% block head %}{% endblock %} <!-- This block can be overridden in child templates -->
 </head>
+
 <body>
     <section class="navbar">
         <nav class="navbar-Container">
-            <img src="{{ url_for('static', filename='images/SAV-icon.png') }}" alt="sorting algorithm visualizer icon image">
-            <h1 class="navbar-Title"><a href="{{ url_for('index') }}">Sorting Algorithm Visualizer</a></h1>
+            <!-- Logo -->
+            <img src="{{ url_for('static', filename='images/SAV-icon.png') }}"
+                alt="sorting algorithm visualizer icon image">
+            <h1 class="navbar-Title"><a style="color: var(--cocos-black);" href="{{ url_for('index') }}">Sorting Algorithm Visualizer</a></h1>
+            <!-- Hamburger Menu Button Section -->
+            <button  class="hamburger-button " type="button" id="menu-btn">
+                <span class="hamburger-line-top"></span>
+                <span class="hamburger-line-middle"></span>
+                <span class="hamburger-line-bottom"></span>
+            </button>
         </nav>
     </section>
-    {% block body %}{% endblock %}
-    <footer>
-        
-    </footer>
-    <script src="{{ url_for('static', filename='app/app.js') }}"></script>
+
+    <div class="sav-menu hidden" id="menu" >
+        <div class="title-menu" style="border-bottom: 1px solid var(--cocos-black); padding-bottom: 10px; margin-left: 20px;">
+            <h3 class="pop-menu-title" style="font-family: var(--primary-font); color: var(--cocos-black); font-size: 25px; text-shadow: 1px 1px 2px #000000; letter-spacing: 1px;">Sorting Algorithm Visualizer</h3>
+        </div>
+        <div class="sort-menu" style="padding-top: 10px; position: relative; margin-left: 20px;">
+            <h3 class="pop-menu-title" style=" margin-left: 50px; font-family: var(--primary-font); color: var(--cocos-black); font-size: 25px; text-shadow: 1px 1px 2px #000000; letter-spacing: 1px;">
+                Sorts</h3>
+            <img style="position: absolute; top: 12px; width: 32px; height: 32px;"  src="{{ url_for('static', filename='images/SAV-icon.png') }}" alt="sorting algorithm visualizer icon image">
+            <div class="log sort" style="padding-top: 20px;">
+                <p class="log-sort-title" style="font-family: var(--third-font); font-size: 25px; color: var(--cocos-black); ">Logarithmic</p>
+                <li style="text-decoration: none; list-style: none; margin-top: 20px; margin-left: 50px; display: flex; flex-direction: column; gap: 30px;">
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Quick Sort <i class="fa-solid fa-angles-right" ></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Merge Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Heap Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                </li>
+            </div>
+            <div class="quad sort" style="padding-top: 20px;">
+                <p class="quad-sort-title" style="font-family: var(--third-font); font-size: 25px; color: var(--cocos-black); ">Quadratic</p>
+                <li style="text-decoration: none; list-style: none; margin-top: 20px; margin-left: 50px; display: flex; flex-direction: column; gap: 30px;">
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Bubble Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Selection Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Insertion Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Gnome Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Shaker Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Odd Even Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Pancake Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                </li>
+            </div>
+            <div class="werid sort" style="padding-top: 20px;">
+                <p class="werid-sort-title" style="font-family: var(--third-font); font-size: 25px; color: var(--cocos-black); ">Weird</p>
+                <li style="text-decoration: none; list-style: none; margin-top: 20px; margin-left: 50px; display: flex; flex-direction: column; gap: 30px;">
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Bitonic Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Radix Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Shell Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Comb Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Bogo Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Stooge Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                </li>
+            </div>
+            <div class="custom sort" style="padding-top: 20px;">
+                <p class="cus-sort-title" style="font-family: var(--third-font); font-size: 25px; color: var(--cocos-black); ">Custom</p>
+                <li style="text-decoration: none; list-style: none; margin-top: 20px; margin-left: 50px; display: flex; flex-direction: column; gap: 30px;">
+                    <a><span style=" font-family: var(--third-font); font-size: 22px; color: var(--platinum-color); text-shadow: 2px 2px 4px #000000; font-style:oblique;">Your own Sort <i class="fa-solid fa-angles-right"></i></span></a>
+                </li>
+            </div>
+        </div>
+    </div>
+    <section class="hero-section">
+        {% block body %}{% endblock %} <!-- This block can be overridden in child templates -->
+    </section>
+
+    <script src="{{ url_for('static', filename='app/app.js') }}"></script> <!-- Link to the JavaScript file -->
 </body>
+
 </html>

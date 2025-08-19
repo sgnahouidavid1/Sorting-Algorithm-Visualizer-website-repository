@@ -1,22 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Arbutus&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Arbutus&family=Average&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 :root {
     --primary-font: "Arbutus", sans-serif;
     --secondary-font: "Average", sans-serif;
+    --third-font: 'Ubuntu', monospace, Courier;
     --payne-gray-color: #546A7B;
     --dim-gray-color: #626267;
     --cocoa-brown-color: #D96C06;
     --platinum-color: #DAE3E5;
     --black-color: #000000;
     --white-color: #FFFFFF;
+    --seafoam-slate: #a7bac0;
+    --cocos-black: #1a1b1a;
 
 
 }
+
 body {
     line-height: 1.5;
     font-size: 16px;
@@ -40,30 +47,179 @@ img {
 .navbar {
     width: 100%;
     padding: 20px 40px 30px;
-    background-color: var(--payne-gray-color);
+    background-color: var(--dim-gray-color);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    border-bottom: 1px solid var(--cocos-black);
+    /* Light gray border line */
 }
 
 .navbar .navbar-Container {
     display: flex;
     flex-direction: row;
     gap: 30px;
+    position: relative;
 }
 
 .navbar .navbar-Container .navbar-Title {
     font-family: var(--primary-font);
-    font-size: 24px;
+    font-size: 28px;
     text-align: center;
     align-items: center;
     justify-content: center;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #000000;
 }
 
 .navbar .navbar-Container img {
     width: 28px;
     height: 28px;
-    margin-top: 5px;
+    margin-top: 8px;
+}
+
+.sav-menu {
+    position: fixed;
+    top: 93px;
+    right: 0px;
+    width: 0px;
+    color: var(--platinum-color);
+    height: 700px;
+    border-left: 1px solid var(--cocos-black);
+    padding: 20px 0px;
+    background-color: var(--dim-gray-color);
+    transition: width 0.4s;
+    z-index: 100;
+    overflow-x: hidden;
+}
+
+/* @keyframes slideInFromRight {
+    from {
+        right: -500px;
+    }
+    to {
+        right: 0; 
+    }
+} */
+
+.sav-menu.visable {
+    /* animation: slideInFromRight .5s ease-out forwards; */
+    width: 25%;
+    overflow-y: scroll;
+}
+
+.sav-menu.hidden {
+    /* animation: slideOutFromRight .5s ease-out backwards; */
+    width: 0px;
+    overflow-y: hidden;
+}
+
+/* @keyframes slideOutFromRight {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: -500px;
+    }
+} */
+.sav-menu .sort-menu .sort li a span i {
+    transition: all 0.3s;
+}
+.sav-menu .sort-menu .sort li a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    text-underline-offset: 5px; /* Adjust this value for desired spacing */
+    color: var(--platinum-color);
+}
+.sav-menu .sort-menu .sort li a span:hover  i {
+    transform: translateX(10px);
+}
+
+/* Hamburger Menu */
+.hamburger-button {
+    border: none;
+    background: none;
+    color: var(--cocos-black);
+    padding: 10px;
+    margin-right: 10px;
+    /* Adjust margin for hamburger button */
+    z-index: 1001;
+    /* Ensure hamburger button is above other content */
+    cursor: pointer;
+}
+
+
+.hamburger-line-top,
+.hamburger-line-middle,
+.hamburger-line-bottom {
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    width: 30px;
+    height: 5px;
+    border-radius: 5px;
+    background: var(--black-color);
+    transform: rotate(0);
+    transition: all 0.5s; /* Smooth transition for hover effect */
+}
+
+.hamburger-line-top:hover,
+.hamburger-line-middle:hover,
+.hamburger-line-bottom:hover {
+    color: var(--payne-gray-color);
+}
+
+/* Repositioning the hamburger lines allow the hamburger button to be shown. */
+.hamburger-line-middle {
+    transform: translateY(7px);
+    /* Position the middle line on the Y-axis downwards 7 pixels */
+}
+
+.hamburger-line-bottom {
+    transform: translateY(14px);
+    /* Position the bottom line on the Y-axis downwards 14 pixels */
+}
+
+/* Rotate the hamburger lines when the button is clicked */
+.hamburger-button.open .hamburger-line-top {
+    transform: rotate(45deg) translateY(6px) translateX(6px);
+    /* Rotate the top line to form an X */
+}
+
+.hamburger-button.open .hamburger-line-middle {
+    display: none;
+    /* Hide the middle line when the button is open */
+}
+
+.hamburger-button.open .hamburger-line-bottom {
+    transform: rotate(-225deg) translateY(-6px) translateX(6px);
+    /* Rotate the bottom line to form an X */
+}
+
+/* ScrollBar */
+
+/* width */
+.sav-menu::-webkit-scrollbar {
+    width: 7px;
+    height: 100px;
+}
+
+/* Track */
+.sav-menu::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+.sav-menu::-webkit-scrollbar-thumb {
+    background: darkgray;
+    border-radius: 10px;
+    height: 100px;
+}
+
+/* Handle on hover */
+.sav-menu::-webkit-scrollbar-thumb:hover {
+    background: lightgray;
 }

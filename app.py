@@ -10,10 +10,11 @@ app = Flask(__name__)
 # a route for the main homepage.
 
 @app.route("/")
-def index():
-    return render_template("index.html")
+def index(): # This is the main homepage
+    return render_template("index.html") #
 
 
-if __name__ in "__main__":
-    app.run(debug=True)
+if __name__ == "__main__": # This ensures the app runs only if this file is executed directly
+    app.run(debug=True) # The debug=True will allow us to see errors in the browser and automatically reload the server when changes are made.
+    # The app will run on http://127.0.0.1:5000
 
